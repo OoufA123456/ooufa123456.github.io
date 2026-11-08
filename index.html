@@ -3,70 +3,1107 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    name="description"
+    content="Nakyung (Chloe) Oh — psychology, data science, and human behavior."
+  >
+
   <title>Nakyung Oh | Portfolio</title>
+
   <style>
+    /* COLORS & BASIC STYLES */
+    :root {
+      --ink: #151515;
+      --paper: #fafaf8;
+      --muted: #686868;
+      --line: #dededb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      max-width: 850px;
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid #777;
+      outline-offset: 6px;
+    }
+
+    ::selection {
+      background: var(--ink);
+      color: white;
+    }
+
+    .wrap {
+      max-width: 1160px;
       margin: auto;
-      padding: 70px 24px;
-      line-height: 1.7;
-      color: #243247;
-      background: #f8fafc;
+      padding: 0 40px;
     }
-    h1 { font-size: 44px; margin-bottom: 8px; }
-    h2 { margin-top: 45px; }
-    a { color: #2459a6; }
+
+    .skip {
+      position: fixed;
+      top: -100px;
+      background: #111;
+      color: white;
+      padding: 12px;
+      z-index: 100;
+    }
+
+    .skip:focus {
+      top: 10px;
+    }
+
+    /* NAVIGATION */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(250, 250, 248, 0.96);
+      border-bottom: 1px solid var(--line);
+      z-index: 10;
+    }
+
+    .nav {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .brand span {
+      font-weight: 400;
+    }
+
+    .links {
+      display: flex;
+      gap: 28px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+    }
+
+    .links a {
+      position: relative;
+    }
+
+    .links a::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: currentColor;
+      transition: width 0.25s;
+    }
+
+    .links a:hover::after {
+      width: 100%;
+    }
+
+    /* INTRODUCTION */
+    .hero {
+      min-height: calc(100svh - 82px);
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      align-items: center;
+      gap: 70px;
+      padding-top: 70px;
+      padding-bottom: 70px;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    h1 {
+      font-size: clamp(54px, 6.3vw, 86px);
+      line-height: 1.05;
+      letter-spacing: -5px;
+      font-weight: 600;
+      margin: 28px 0;
+    }
+
+    h1 span {
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      letter-spacing: 0.2px;
+    }
+
+    .typing {
+      min-height: 58px;
+      max-width: 470px;
+      margin: 22px 0 28px;
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    .cursor {
+      border-right: 1px solid;
+      animation: blink 1s step-end infinite;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 30px;
+      padding: 13px 23px;
+      border: 1px solid var(--ink);
+      font-size: 13px;
+      transition:
+        background 0.2s,
+        color 0.2s,
+        transform 0.2s;
+    }
+
+    .button.primary {
+      background: var(--ink);
+      color: white;
+    }
+
+    .button:hover {
+      background: #333;
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* PROFILE PHOTO */
+    .portrait-area {
+      position: relative;
+      padding: 30px 0 40px;
+    }
+
+    .portrait-frame {
+      position: relative;
+      aspect-ratio: 1;
+      max-width: 390px;
+      margin: auto;
+      padding: 12px;
+      border: 1px solid #c8c8c5;
+      border-radius: 50%;
+    }
+
+    .portrait-frame::after {
+      content: "";
+      position: absolute;
+      inset: -19px;
+      border: 1px dashed var(--line);
+      border-radius: 50%;
+      animation: rotate 100s linear infinite;
+      pointer-events: none;
+    }
+
+    .portrait-frame img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .caption {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 38px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--muted);
+    }
+
+    .scroll-note {
+      display: inline-block;
+      margin-top: 52px;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .scroll-note span {
+      display: inline-block;
+      margin-right: 14px;
+      animation: down 2s ease-in-out infinite;
+    }
+
+    /* MOVING SKILLS STRIP */
+    .band {
+      background: var(--ink);
+      color: white;
+      overflow: hidden;
+      padding: 22px 0;
+    }
+
+    .ticker {
+      display: flex;
+      width: max-content;
+      animation: travel 35s linear infinite;
+    }
+
+    .ticker span {
+      white-space: nowrap;
+      padding-right: 55px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* SECTIONS */
+    .section {
+      padding-top: 100px;
+      padding-bottom: 100px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 25px;
+      margin-bottom: 42px;
+    }
+
+    .number {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--muted);
+    }
+
+    h2 {
+      font-weight: 500;
+      font-size: clamp(34px, 4vw, 51px);
+      line-height: 1.15;
+      letter-spacing: -2px;
+      margin: 14px 0 0;
+    }
+
+    h2 em {
+      font-family: Georgia, serif;
+      font-weight: 400;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+    }
+
+    .about-lead {
+      font-size: 25px;
+      line-height: 1.5;
+      letter-spacing: -0.6px;
+    }
+
+    .body-copy {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .education {
+      border-top: 1px solid var(--line);
+      padding-top: 22px;
+      margin-top: 26px;
+    }
+
+    .education strong {
+      display: block;
+      color: var(--ink);
+    }
+
+    /* PROJECTS */
+    .projects {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
     .project {
-      background: black;
-      padding: 24px;
-      margin: 16px 0;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
+      border: 1px solid var(--line);
+      padding: 30px;
+      background: white;
+      transition:
+        transform 0.3s,
+        border-color 0.3s;
     }
-    .project h3 { margin-top: 0; }
+
+    .project:hover {
+      transform: translateY(-5px);
+      border-color: #555;
+    }
+
+    .project-no {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: var(--muted);
+    }
+
+    .project h3 {
+      font-size: 27px;
+      line-height: 1.25;
+      letter-spacing: -0.8px;
+      font-weight: 500;
+      margin: 35px 0 16px;
+    }
+
+    .project p {
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 24px 0;
+    }
+
+    .tags span {
+      font-size: 10px;
+      letter-spacing: 0.6px;
+      border: 1px solid var(--line);
+      padding: 5px 9px;
+    }
+
+    details {
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+    }
+
+    summary {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      font-size: 19px;
+      line-height: 1;
+    }
+
+    details[open] summary::after {
+      content: "−";
+    }
+
+    details p {
+      margin-bottom: 0;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 35px;
+    }
+
+    .skill {
+      border-top: 1px solid var(--ink);
+      padding-top: 22px;
+    }
+
+    .skill h3 {
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .skill p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 2;
+    }
+
+    /* CONTACT & FOOTER */
+    .contact {
+      background: var(--ink);
+      color: white;
+      padding: 90px 0;
+    }
+
+    .contact .number {
+      color: #aaa;
+    }
+
+    .contact h2 {
+      font-size: clamp(44px, 6vw, 75px);
+      max-width: 700px;
+      margin-bottom: 30px;
+    }
+
+    .contact .button {
+      border-color: #888;
+      margin-top: 10px;
+    }
+
+    .contact p {
+      color: #bbb;
+      max-width: 500px;
+    }
+
+    footer {
+      background: var(--ink);
+      color: #aaa;
+      font-size: 11px;
+    }
+
+    .footer-inner {
+      border-top: 1px solid #3a3a3a;
+      display: flex;
+      justify-content: space-between;
+      padding-top: 25px;
+      padding-bottom: 30px;
+    }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 1;
+    }
+
+    .motion .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition:
+        opacity 0.75s ease,
+        transform 0.75s ease;
+    }
+
+    .motion .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ANIMATIONS */
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    @keyframes down {
+      50% { transform: translateY(5px); }
+    }
+
+    @keyframes rotate {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes travel {
+      to { transform: translateX(-50%); }
+    }
+
+    /* MOBILE LAYOUT */
+    @media (max-width: 800px) {
+      .wrap {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      .nav {
+        height: 74px;
+      }
+
+      .links {
+        gap: 16px;
+        font-size: 10px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        min-height: auto;
+        padding-top: 70px;
+        padding-bottom: 60px;
+      }
+
+      h1 {
+        letter-spacing: -3px;
+      }
+
+      .portrait-area {
+        max-width: 360px;
+        width: 100%;
+        margin: auto;
+      }
+
+      .scroll-note {
+        margin-top: 30px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .section {
+        padding-top: 65px;
+        padding-bottom: 65px;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      .section-top {
+        align-items: start;
+      }
+
+      .section-top > p {
+        display: none;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .links {
+        gap: 12px;
+      }
+
+      .links a:nth-child(3) {
+        display: none;
+      }
+
+      .brand {
+        font-size: 16px;
+      }
+
+      .project {
+        padding: 24px;
+      }
+
+      .caption {
+        font-size: 9px;
+        gap: 16px;
+      }
+
+      .footer-inner {
+        gap: 20px;
+      }
+    }
+
+    /* ACCESSIBILITY: RESPECT REDUCED-MOTION SETTINGS */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .motion .reveal {
+        opacity: 1;
+        transform: none;
+      }
+
+      .ticker {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 0 24px;
+      }
+
+      .ticker span {
+        white-space: normal;
+      }
+
+      .ticker span[aria-hidden] {
+        display: none;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <h1>Nakyung (Chloe) Oh</h1>
-  <p>Psychology · Data Science · Human Behavior</p>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <h2>About Me</h2>
-  <p>
-    I study Data Science in Human Behavior at the University of
-    Wisconsin–Madison. I use statistical analysis and machine
-    learning to explore questions about people, learning, and behavior.
-  </p>
+  <!-- NAVIGATION -->
+  <header>
+    <nav class="wrap nav" aria-label="Main navigation">
+      <a class="brand" href="#home">
+        NAKYUNG OH<span> /</span>
+      </a>
 
-  <h2>Selected Projects</h2>
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-  <div class="project">
-    <h3>Does Reading Matter?</h3>
-    <p>
-      Using LLMs to analyze Goodreads reviews and examine how readers
-      describe their experiences with books.
-    </p>
-  </div>
+  <main id="main">
 
-  <div class="project">
-    <h3>Reading Ability and Mathematics Performance</h3>
-    <p>
-      Examining the relationship between predicted reading ability
-      and mathematics performance using mixed-effects models.
-    </p>
-  </div>
+    <!-- INTRODUCTION -->
+    <section class="wrap hero" id="home">
+      <div>
+        <div class="eyebrow">Psychology meets data science</div>
 
-  <div class="project">
-    <h3>HR Analytics</h3>
-    <p>
-      Exploring relationships between employee turnover and store
-      sales using regression analysis.
-    </p>
-  </div>
+        <h1>
+          Nakyung<br>
+          <span>(Chloe)</span> Oh.
+        </h1>
 
-  <h2>Contact</h2>
-  <p>
-    <a href="https://github.com/nakyungoh0314">Visit my GitHub</a>
-  </p>
+        <p class="subtitle">
+          Data Science · Psychology · Human Behavior
+        </p>
+
+        <p
+          class="typing"
+          aria-label="Exploring human behavior through data."
+        >
+          <span id="typed" aria-hidden="true">
+            Exploring human behavior through data.
+          </span>
+          <span class="cursor" aria-hidden="true">&nbsp;</span>
+        </p>
+
+        <div class="actions">
+          <a class="button primary" href="#projects">
+            Explore my work <span aria-hidden="true">↗</span>
+          </a>
+
+          <a
+            class="button"
+            href="https://github.com/nakyungoh0314"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+
+        <a class="scroll-note" href="#about">
+          <span aria-hidden="true">↓</span>
+          A little more about me
+        </a>
+      </div>
+
+      <div class="portrait-area">
+        <div class="portrait-frame">
+          <img
+            src="profile.jpg"
+            alt="Nakyung (Chloe) Oh"
+            width="600"
+            height="600"
+          >
+        </div>
+
+        <div class="caption">
+          <span>Human questions.</span>
+          <span>Data-driven exploration.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOVING SKILLS STRIP -->
+    <div class="band">
+      <div class="ticker">
+        <span>
+          Python &nbsp; / &nbsp;
+          R &nbsp; / &nbsp;
+          SQL &nbsp; / &nbsp;
+          Machine learning &nbsp; / &nbsp;
+          Human behavior &nbsp; / &nbsp;
+          Statistical modeling &nbsp; / &nbsp;
+        </span>
+
+        <span aria-hidden="true">
+          Python &nbsp; / &nbsp;
+          R &nbsp; / &nbsp;
+          SQL &nbsp; / &nbsp;
+          Machine learning &nbsp; / &nbsp;
+          Human behavior &nbsp; / &nbsp;
+          Statistical modeling &nbsp; / &nbsp;
+        </span>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about" class="wrap section reveal">
+      <div class="section-top">
+        <div>
+          <span class="number">01 / ABOUT</span>
+          <h2>Curiosity, backed by <em>data.</em></h2>
+        </div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-lead">
+          I explore questions about people, learning, and behavior
+          through statistical analysis and machine learning.
+        </div>
+
+        <div class="body-copy">
+          <p>
+            I'm studying Data Science in Human Behavior at the
+            University of Wisconsin–Madison. My projects bring
+            together psychology and quantitative methods, from
+            analyzing readers' responses to books to examining
+            student learning.
+          </p>
+
+          <p>
+            I enjoy translating complex analyses into clear
+            explanations that connect the methods back to the question.
+          </p>
+
+          <div class="education">
+            <span class="number">EDUCATION</span>
+            <strong>University of Wisconsin–Madison</strong>
+            <span>
+              MS Psychology · Data Science in Human Behavior
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="wrap section">
+      <div class="section-top reveal">
+        <div>
+          <span class="number">02 / SELECTED WORK</span>
+          <h2>Questions into <em>insights.</em></h2>
+        </div>
+
+        <p class="body-copy">Research &amp; applied analytics</p>
+      </div>
+
+      <div class="projects">
+
+        <article class="project reveal">
+          <div class="project-no">
+            <span>01 / Reading &amp; language</span>
+            <span aria-hidden="true">↗</span>
+          </div>
+
+          <h3>Does Reading Matter?</h3>
+
+          <p>
+            Using LLMs to analyze Goodreads reviews and explore
+            how readers describe their experiences with books.
+          </p>
+
+          <div class="tags">
+            <span>LLMs</span>
+            <span>Text analysis</span>
+            <span>Human coding</span>
+          </div>
+
+          <details>
+            <summary>Explore the project</summary>
+            <p>
+              Applied human-defined categories to book reviews
+              and evaluated agreement between LLM-generated
+              labels and human ratings using weighted F1 scores.
+            </p>
+          </details>
+        </article>
+
+        <article class="project reveal">
+          <div class="project-no">
+            <span>02 / Learning analytics</span>
+            <span aria-hidden="true">↗</span>
+          </div>
+
+          <h3>Reading Ability &amp; Mathematics</h3>
+
+          <p>
+            Examining how predicted reading ability relates to
+            mathematics performance across Mathstream lessons.
+          </p>
+
+          <div class="tags">
+            <span>R</span>
+            <span>Mixed-effects models</span>
+            <span>Education</span>
+          </div>
+
+          <details>
+            <summary>Explore the project</summary>
+            <p>
+              Used mixed-effects logistic models to examine
+              passing and completion outcomes, and explored how
+              the estimated relationship varies across lessons.
+            </p>
+          </details>
+        </article>
+
+        <article class="project reveal">
+          <div class="project-no">
+            <span>03 / Behavioral neuroscience</span>
+            <span aria-hidden="true">↗</span>
+          </div>
+
+          <h3>Decoding Emotion Regulation</h3>
+
+          <p>
+            Exploring whether fMRI activity patterns distinguish
+            reappraisal from baseline conditions.
+          </p>
+
+          <div class="tags">
+            <span>Python</span>
+            <span>KNN</span>
+            <span>fMRI</span>
+          </div>
+
+          <details>
+            <summary>Explore the project</summary>
+            <p>
+              Applied classification methods to brain activity
+              data and collaborated on debugging and evaluating
+              the analysis.
+            </p>
+          </details>
+        </article>
+
+        <article class="project reveal">
+          <div class="project-no">
+            <span>04 / People analytics</span>
+            <span aria-hidden="true">↗</span>
+          </div>
+
+          <h3>Employee Turnover &amp; Store Sales</h3>
+
+          <p>
+            Investigating how employee turnover relates to
+            business performance across 126 stores.
+          </p>
+
+          <div class="tags">
+            <span>Excel</span>
+            <span>Regression</span>
+            <span>HR analytics</span>
+          </div>
+
+          <details>
+            <summary>Explore the project</summary>
+            <p>
+              Examined the association between turnover and
+              sales while controlling for prior sales, translating
+              the model results into business-relevant interpretations.
+            </p>
+          </details>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="wrap section reveal">
+      <div class="section-top">
+        <div>
+          <span class="number">03 / TOOLKIT</span>
+          <h2>Methods behind <em>the work.</em></h2>
+        </div>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill">
+          <span class="number">01</span>
+          <h3>Programming &amp; analysis</h3>
+          <p>
+            Python · R · SQL<br>
+            Excel · Jupyter · GitHub
+          </p>
+        </div>
+
+        <div class="skill">
+          <span class="number">02</span>
+          <h3>Statistical modeling</h3>
+          <p>
+            Regression · Mixed-effects models<br>
+            Model evaluation · Data visualization
+          </p>
+        </div>
+
+        <div class="skill">
+          <span class="number">03</span>
+          <h3>Machine learning &amp; language</h3>
+          <p>
+            Classification · Neural networks<br>
+            NLP · LLM-assisted text analysis
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <div class="wrap reveal">
+        <span class="number">04 / CONNECT</span>
+
+        <h2>
+          Good questions start<br>
+          <em>good conversations.</em>
+        </h2>
+
+        <p>
+          Explore my GitHub profile to learn more about my work.
+        </p>
+
+        <a
+          class="button"
+          href="https://github.com/nakyungoh0314"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Find me on GitHub <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>
+        © <span id="year">2026</span> Nakyung (Chloe) Oh
+      </span>
+
+      <a href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+
+    // Automatically update the footer year.
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    if (!reducedMotion.matches) {
+
+      // Reveal sections when they enter the viewport.
+      if ("IntersectionObserver" in window) {
+        document.body.classList.add("motion");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.08 }
+        );
+
+        document.querySelectorAll(".reveal").forEach((element) => {
+          observer.observe(element);
+        });
+      }
+
+      // Type and erase introductory phrases.
+      const phrases = [
+        "Exploring human behavior through data.",
+        "Connecting psychology and machine learning.",
+        "Turning research questions into insights."
+      ];
+
+      const target = document.getElementById("typed");
+
+      let phraseIndex = 0;
+      let characterIndex = phrases[0].length;
+      let deleting = true;
+
+      function type() {
+        if (reducedMotion.matches) {
+          target.textContent = phrases[0];
+          return;
+        }
+
+        const currentPhrase = phrases[phraseIndex];
+
+        characterIndex += deleting ? -1 : 1;
+        target.textContent = currentPhrase.slice(0, characterIndex);
+
+        let delay = deleting ? 28 : 60;
+
+        if (characterIndex === 0) {
+          deleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          delay = 350;
+        } else if (
+          !deleting &&
+          characterIndex === currentPhrase.length
+        ) {
+          deleting = true;
+          delay = 2400;
+        }
+
+        setTimeout(type, delay);
+      }
+
+      setTimeout(type, 2600);
+    }
+  </script>
 </body>
 </html>
